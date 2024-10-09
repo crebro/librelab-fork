@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIBRELAB HOMEPAGE</title>
+    <link rel="stylesheet" href="/styles/home-style.css" />
+    <link rel="stylesheet" href="/styles/minimal-margins.css" />
+    <link rel="stylesheet" href="/styles/markdown-styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="title-segment flex items-end justify-start">
+      <a href="./"> <div class="text-6xl font-bold">LibreLab</div> </a>
+      <div class="mt-4 mx-5">
+        A<a
+          class="a-not-styled"
+          href="https://hacktoberfest.com"
+          target="_blank"
+          ><span
+            class="px-2 py-1 mx-2 text-sm rounded-lg bg-green-800 text-white"
+            >HACKTOBERFEST</span
+          ></a
+        >Effort
+      </div>
+    </div>
+
+    <div class="mt-2">A Minimal Wiki Site for Xavierian Entries.</div>
+
+    <div class="mt-10"></div>
+
+    <div id="content"></div>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="
+https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/dist/markdown-it.min.js
+"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js"></script> -->
+    <script src="/scripts/contentmap.js"></script>
+    <script src="/scripts/loadtextcontent.js"></script>
+    <script src="/scripts/loader.js"></script>
+
+    <script>
+      tailwind.config = {
+        corePlugins: {
+          preflight: false,
+        },
+      };
+    </script>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const item = urlParams.get("key");
+      loadMarkdownItem(item);
+    </script>
+  </body>
+</html>

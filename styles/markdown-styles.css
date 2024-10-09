@@ -1,0 +1,20 @@
+p {
+  margin: 20px 0 20px 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Kalnia";
+  margin: 10px 0 10px 0;
+}
+
+ol > li::marker {
+  font-weight: bold;
+}
+
+hr {
+  border-top: dashed 1px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

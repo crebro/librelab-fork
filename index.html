@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIBRELAB HOMEPAGE</title>
+    <link rel="stylesheet" href="/styles/home-style.css" />
+    <link rel="stylesheet" href="/styles/minimal-margins.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="title-segment flex items-end justify-start">
+      <a href="./"> <div class="text-6xl font-bold">LibreLab</div> </a>
+      <div class="mt-4 mx-5">
+        A<a
+          class="a-not-styled"
+          href="https://hacktoberfest.com"
+          target="_blank"
+          ><span
+            class="px-2 py-1 mx-2 text-sm rounded-lg bg-green-800 text-white"
+            >HACKTOBERFEST</span
+          ></a
+        >Effort
+      </div>
+    </div>
+
+    <div class="mt-2">A Minimal Wiki Site for Xavierian Entries.</div>
+
+    <div class="mt-10"></div>
+
+    <div class="grid grid-cols-2 mt-6 gap-2" id="content-listing">
+      <!-- <div
+        class="rounded-lg aspect-square border-2 bg-slate-50"
+        style="background-image: url('')"
+      ></div> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="/scripts/contentmap.js"></script>
+    <script src="/scripts/loadtextcontent.js"></script>
+    <script src="/scripts/loader.js"></script>
+
+    <script>
+      // script to load content from ./scripts/contentmap.js
+      const listingItem = document.createElement("div");
+      listingItem.classList.add(
+        "relative",
+        "rounded-lg",
+        "aspect-square",
+        "border-2",
+        "bg-slate-50",
+        "cursor-pointer",
+        "listing-item-image"
+      );
+      const imageShader = document.createElement("div");
+      imageShader.classList.add(
+        "absolute",
+        "inset-0",
+        "bg-gradient-to-t",
+        "from-gray-700",
+        "to-transparent",
+        "rounded-lg"
+      );
+
+      let validkeys = Object.keys(contentFiles);
+      for (let i = 0; i < validkeys.length; i++) {
+        const key = validkeys[i];
+        const item = contentFiles[key];
+        const itemDiv = listingItem.cloneNode(true);
+        if (item.image) {
+          itemDiv.style.backgroundImage = `url('${item.image}')`;
+        }
+        itemDiv.addEventListener("click", () => {
+          window.location.href = `./viewitem.html?key=${key}`;
+        });
+        itemDiv.appendChild(imageShader.cloneNode(true));
+
+        const textItem = document.createElement("div");
+        textItem.classList.add(
+          "absolute",
+          "bottom-0",
+          "mb-5",
+          "ml-5",
+          "text-2xl",
+          "font-bold",
+          "text-white",
+          "text-lg"
+        );
+        textItem.innerText = item.title;
+
+        itemDiv.appendChild(textItem);
+
+        document.getElementById("content-listing").appendChild(itemDiv);
+      }
+    </script>
+  </body>
+</html>
