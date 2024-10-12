@@ -13,5 +13,7 @@ function loadMarkdownItem(key) {
         return ""; // use external default escaping
       },
     }).render(content);
+
+    applyImageEffect();
   });
 }
